@@ -360,6 +360,112 @@
         font-size: 0.9rem;
     }
 }
+        /* ---------- Responsive Footer ---------- */
+
+/* Base footer styling adjustments */
+.footer-container {
+    width: 100%;
+    background: #f8f9fa;
+    padding: 50px 5%;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.logo-section, 
+.product-categories {
+    flex: 1 1 45%;
+}
+
+/* --- Tablet (768px–1023px) --- */
+@media (max-width: 1023px) {
+    .footer-container {
+        padding: 40px 4%;
+    }
+    .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+    .logo-section, 
+    .product-categories {
+        flex: 1 1 100%;
+    }
+    .logo-container {
+        justify-content: center;
+    }
+    .footer-description {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+/* --- Mobile (up to 767px) --- */
+@media (max-width: 767px) {
+    .footer-container {
+        padding: 30px 3%;
+    }
+    .footer-grid {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    .logo-container img {
+        width: 50px;
+        height: 50px;
+    }
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    .footer-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .nav-links, 
+    .secondary-nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .share-section {
+        margin-top: 15px;
+    }
+}
+
+/* --- Laptop (1024px–1439px) --- */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .footer-container {
+        padding: 60px 8%;
+    }
+    .footer-grid {
+        gap: 40px;
+    }
+    .logo-section, 
+    .product-categories {
+        flex: 1 1 48%;
+    }
+}
+
+/* --- Large Monitors (1440px and above) --- */
+@media (min-width: 1440px) {
+    .footer-container {
+        padding: 80px 12%;
+    }
+    .footer-grid {
+        gap: 50px;
+    }
+    .footer-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 600px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -561,6 +667,7 @@ if (notifyBtn) {
     <!-- Footer would go here (same as other pages) -->
 </body>
 </html>
+
 
 
 
