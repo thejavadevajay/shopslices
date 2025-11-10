@@ -6,23 +6,435 @@
     <title>ShopSlices - Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="icon" href="Logo.jpg" type="image/png" sizes="32x32" />
-    <link rel="stylesheet" href="shop.css" />
     <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            z-index: 999;
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+
+        #brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .brand-logo {
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        #navbar li {
+            list-style: none;
+            padding: 0 15px;
+            position: relative;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #088178;
+            font-weight: 700;
+        }
+
+        #navbar li a.active::after,
+        #navbar li a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: #088178;
+            position: absolute;
+            bottom: -4px;
+            left: 15px;
+        }
+
+        /* Mobile Menu Toggle */
+        #mobile {
+            display: none;
+            align-items: center;
+        }
+
+        #close {
+            display: none;
+        }
+
+        /* Products Section */
         .products-section {
-            padding: 80px 20px;
+            padding: 80px 5%;
             text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
         .products-section h1 {
             color: #088178;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 2.5rem;
         }
-        
-        .coming-soon {
+
+        /* Coming Soon Section */
+        .coming-soon-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 50px 40px;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            color: #088178;
+            margin-bottom: 25px;
+        }
+
+        .coming-soon-title {
+            font-size: 2rem;
+            color: #088178;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .coming-soon-text {
             font-size: 1.2rem;
             color: #666;
-            margin-top: 50px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #088178;
+            border-radius: 10px;
+            width: 65%;
+            animation: progress 2s ease-in-out;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 65%; }
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .notify-btn {
+            background: #088178;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(8, 129, 120, 0.3);
+        }
+
+        .notify-btn:hover {
+            background: #066a63;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(8, 129, 120, 0.4);
+        }
+
+        /* Footer Styles */
+        .footer-container {
+            background-color: #f8f9fa;
+            padding: 40px 5%;
+            margin-top: auto;
+            border-top: 1px solid #e1e1e1;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-left: 10px;
+        }
+
+        .footer-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .members-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-group {
+            display: flex;
+            margin-right: 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .members-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .members-count {
+            font-weight: 700;
+            color: #088178;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #088178;
+        }
+
+        .secondary-nav-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            #header {
+                padding: 15px 4%;
+            }
+            
+            .products-section {
+                padding: 60px 4%;
+            }
+            
+            .coming-soon-container {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background-color: #fff;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 20px;
+                transition: 0.3s;
+            }
+
+            #navbar.active {
+                right: 0;
+            }
+
+            #navbar li {
+                margin-bottom: 25px;
+            }
+
+            #mobile {
+                display: flex;
+                align-items: center;
+            }
+
+            #mobile i {
+                color: #1a1a1a;
+                font-size: 24px;
+                padding-left: 20px;
+            }
+
+            #close {
+                display: initial;
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                color: #222;
+                font-size: 24px;
+            }
+
+            .products-section h1 {
+                font-size: 2rem;
+            }
+            
+            .coming-soon-title {
+                font-size: 1.7rem;
+            }
+            
+            .coming-soon-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 477px) {
+            #header {
+                padding: 10px 4%;
+            }
+
+            .products-section {
+                padding: 40px 4%;
+            }
+
+            .products-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .coming-soon-container {
+                padding: 30px 20px;
+            }
+            
+            .coming-soon-title {
+                font-size: 1.5rem;
+            }
+            
+            .coming-soon-text {
+                font-size: 1rem;
+            }
+            
+            .coming-soon-icon {
+                font-size: 3rem;
+            }
+            
+            .notify-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #brand {
+                font-size: 18px;
+            }
+            
+            .brand-logo {
+                height: 30px;
+            }
+            
+            .products-section h1 {
+                font-size: 1.6rem;
+            }
+            
+            .coming-soon-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Large Screens (Monitors) */
+        @media (min-width: 1200px) {
+            .products-section {
+                padding: 100px 10%;
+            }
+            
+            .coming-soon-container {
+                padding: 60px 50px;
+                max-width: 800px;
+            }
+            
+            .footer-container {
+                padding: 60px 10%;
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .products-section h1 {
+                font-size: 3rem;
+            }
+            
+            .coming-soon-title {
+                font-size: 2.2rem;
+            }
+            
+            .coming-soon-text {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -34,6 +446,7 @@
         </a>
         <div>
             <ul id="navbar">
+                <li id="close"><a href="#"><i class="fas fa-times"></i></a></li>
                 <li><a href="index.html">Home</a></li>
                 <li><a class="active" href="product.html">Shop</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -42,14 +455,119 @@
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
+        <div id="mobile">
+            <a href="#"><i class="fas fa-bars"></i></a>
+        </div>
     </section>
 
     <section class="products-section">
         <h1>Our Products</h1>
-        <p class="coming-soon">Products section coming soon...</p>
+        
+        <!-- Coming Soon Section -->
+        <div class="coming-soon-container">
+            <div class="coming-soon-icon">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <h2 class="coming-soon-title">Products Section Coming Soon</h2>
+            <p class="coming-soon-text">
+                We're working hard to bring you an amazing collection of products. 
+                Our team is curating the best items to ensure you have a fantastic shopping experience.
+            </p>
+            
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p class="progress-text">Development in progress - 65% complete</p>
+            
+            <p class="coming-soon-text">
+                Stay tuned! We'll be launching our product catalog very soon with exclusive deals 
+                and a wide variety of categories to choose from.
+            </p>
+            
+            <button class="notify-btn">Notify Me When Launched</button>
+        </div>
     </section>
 
-    <!-- Footer would go here (same as other pages) -->
-</body>
+    <!-- Footer -->
+    <div class="footer-container">
+        <section class="footer-section">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="block w-full lg-max-w-full max-lg-mx-auto">
+                        <div class="logo-section">
+                            <div class="logo-container">
+                                <a href="index.html" id="brand">
+                                    <img src="Logo.jpg" alt="ShopSlices Logo" class="brand-logo" />
+                                </a>
+                                <a href="index.html">
+                                    <h1 class="logo-text">ShopSlices</h1>
+                                </a>
+                            </div>
+                            <p class="footer-description">
+                                Trusted by over 5 Thousands customers across many states. Stay
+                                connected with us on for the latest updates and offers.
+                            </p>
+                            <div class="members-container">
+                                <div class="avatar-group">
+                                    <img src="https://i.pravatar.cc/100?img=2" alt="Member 2" class="avatar avatar-2" />
+                                    <img src="https://i.pravatar.cc/100?img=3" alt="Member 3" class="avatar avatar-3" />
+                                </div>
+                                <p class="members-text">
+                                    <span class="members-count">1K</span> Members Join
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-categories">
+                        <div class="nav-links">
+                            <a href="about.html" class="nav-link">About Us</a>
+                        </div>
+                        <div class="secondary-nav-links">
+                            <a href="index.html" class="nav-link">Home</a>
+                            <a href="product.html" class="nav-link">Products</a>
+                            <a href="about.html" class="nav-link">About</a>
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
+    <script>
+        // Mobile menu toggle
+        const bar = document.getElementById('mobile');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+
+        if (bar) {
+            bar.addEventListener('click', () => {
+                nav.classList.add('active');
+            });
+        }
+
+        if (close) {
+            close.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        }
+
+        // Notify button functionality
+        const notifyBtn = document.querySelector('.notify-btn');
+        
+        if (notifyBtn) {
+            notifyBtn.addEventListener('click', () => {
+                notifyBtn.textContent = "Thanks! We'll notify you";
+                notifyBtn.style.backgroundColor = "#28a745";
+                notifyBtn.disabled = true;
+                
+                setTimeout(() => {
+                    notifyBtn.textContent = "Notify Me When Launched";
+                    notifyBtn.style.backgroundColor = "#088178";
+                    notifyBtn.disabled = false;
+                }, 3000);
+            });
+        }
+    </script>
+</body>
 </html>
