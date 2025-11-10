@@ -8,10 +8,18 @@
     <link rel="icon" href="Logo.jpg" type="image/jpg" sizes="32x32" />
     <link rel="stylesheet" href="shop.css" />
     <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             line-height: 1.6;
             color: #333;
             background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Header Styles */
@@ -19,7 +27,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 80px;
+            padding: 15px 5%;
             background: #fff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
             z-index: 999;
@@ -33,12 +41,12 @@
             align-items: center;
             text-decoration: none;
             color: #1a1a1a;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
         }
 
         .brand-logo {
-            height: 40px;
+            height: 35px;
             margin-right: 10px;
         }
 
@@ -50,7 +58,7 @@
 
         #navbar li {
             list-style: none;
-            padding: 0 20px;
+            padding: 0 15px;
             position: relative;
         }
 
@@ -76,7 +84,17 @@
             background: #088178;
             position: absolute;
             bottom: -4px;
-            left: 20px;
+            left: 15px;
+        }
+
+        /* Mobile Menu Toggle */
+        #mobile {
+            display: none;
+            align-items: center;
+        }
+
+        #close {
+            display: none;
         }
 
         /* Contact Header Page */
@@ -84,7 +102,7 @@
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                 url('banner.jpg');
             width: 100%;
-            height: 50vh;
+            height: 40vh;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -100,17 +118,17 @@
         }
 
         #page-header h2 {
-            font-size: 46px;
+            font-size: 36px;
             margin-bottom: 15px;
         }
 
         #page-header p {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         /* Contact Section */
         .section-p1 {
-            padding: 40px 80px;
+            padding: 40px 5%;
         }
 
         #contact-details {
@@ -118,10 +136,11 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-top: 30px;
+            gap: 30px;
         }
 
         .details {
-            flex-basis: 50%;
+            flex: 1;
         }
 
         .details span {
@@ -131,13 +150,13 @@
         }
 
         .details h2 {
-            font-size: 36px;
-            line-height: 50px;
-            padding: 20px 0;
+            font-size: 28px;
+            line-height: 1.4;
+            padding: 15px 0;
         }
 
         .details h3 {
-            font-size: 20px;
+            font-size: 18px;
             padding-bottom: 15px;
         }
 
@@ -154,9 +173,9 @@
 
         .details li i {
             font-size: 18px;
-            padding-right: 22px;
+            padding-right: 15px;
             color: #088178;
-            min-width: 30px;
+            min-width: 25px;
         }
 
         .details li p {
@@ -176,8 +195,8 @@
 
         /* Map Section */
         .map {
-            flex-basis: 45%;
-            height: 400px;
+            flex: 1;
+            height: 350px;
             background: #f5f5f5;
             border-radius: 8px;
             overflow: hidden;
@@ -194,16 +213,17 @@
         #form-details {
             display: flex;
             justify-content: space-between;
-            margin: 30px;
-            padding: 80px;
+            margin: 30px 0;
+            padding: 40px 5%;
             border: 1px solid #e1e1e1;
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            gap: 30px;
         }
 
         #form-details form {
-            width: 65%;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -217,7 +237,7 @@
         }
 
         #form-details form h2 {
-            font-size: 32px;
+            font-size: 26px;
             margin-bottom: 20px;
         }
 
@@ -230,6 +250,7 @@
             border: 1px solid #e1e1e1;
             border-radius: 5px;
             transition: border 0.3s;
+            font-size: 16px;
         }
 
         #form-details form input:focus,
@@ -254,7 +275,7 @@
         }
 
         .people {
-            width: 30%;
+            flex: 1;
         }
 
         .people div {
@@ -264,8 +285,8 @@
         }
 
         .people div img {
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             margin-right: 15px;
             border-radius: 50%;
@@ -273,8 +294,8 @@
 
         .people div p {
             margin: 0;
-            font-size: 13px;
-            line-height: 25px;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .people div p span {
@@ -294,6 +315,7 @@
             margin-top: 20px;
             text-align: center;
             border: 1px solid #c3e6cb;
+            width: 100%;
         }
 
         /* Stats Section */
@@ -310,6 +332,7 @@
             justify-content: space-around;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 5%;
         }
 
         .stat-item {
@@ -327,80 +350,90 @@
             font-size: 18px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 799px) {
-            #navbar {
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                position: fixed;
-                top: 0;
-                right: -300px;
-                height: 100vh;
-                width: 300px;
-                background-color: #e3e6f3;
-                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-                padding: 80px 0 0 10px;
-                transition: 0.3s;
-            }
-
-            #contact-details {
-                flex-direction: column;
-            }
-
-            .details,
-            .map {
-                flex-basis: 100%;
-                width: 100%;
-            }
-
-            .map {
-                margin-top: 30px;
-            }
-
-            #form-details {
-                padding: 40px;
-                flex-direction: column;
-            }
-
-            #form-details form {
-                width: 100%;
-                margin-bottom: 30px;
-            }
-
-            .people {
-                width: 100%;
-            }
-
-            .stats-container {
-                flex-direction: column;
-            }
+        /* Footer Styles */
+        .footer-container {
+            background-color: #f8f9fa;
+            padding: 40px 5%;
+            margin-top: 40px;
         }
 
-        @media (max-width: 477px) {
-            #header {
-                padding: 10px 30px;
-            }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
 
-            .section-p1 {
-                padding: 20px;
-            }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-            #page-header h2 {
-                font-size: 32px;
-            }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-left: 10px;
+        }
 
-            .details h2 {
-                font-size: 26px;
-            }
+        .footer-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
 
-            #form-details {
-                padding: 30px 10px;
-            }
+        .members-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-            #page-header {
-                height: 40vh;
-            }
+        .avatar-group {
+            display: flex;
+            margin-right: 15px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .members-text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .members-count {
+            font-weight: 700;
+            color: #088178;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            display: block;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #088178;
+        }
+
+        .secondary-nav-links {
+            display: flex;
+            flex-direction: column;
         }
 
         /* Social Share Button Styles */
@@ -441,14 +474,14 @@
             transition: 0.2s ease-in-out;
             scale: 0.8;
             padding: 15px;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             z-index: 10;
         }
 
         .share-btn svg {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
         }
 
         .share-btn:hover {
@@ -467,8 +500,8 @@
         .card2,
         .card3,
         .card4 {
-            width: 110px;
-            height: 110px;
+            width: 90px;
+            height: 90px;
             outline: none;
             border: none;
             background: white;
@@ -484,8 +517,8 @@
         .card2 svg,
         .card3 svg,
         .card4 svg {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
         }
 
         .card1 {
@@ -536,8 +569,8 @@
             fill: rgb(39, 39, 39);
         }
 
-        .discord {
-            fill: #8c9eff;
+        .whatsapp {
+            fill: #25D366;
         }
 
         .card1:hover {
@@ -573,18 +606,188 @@
         .card4:hover {
             cursor: pointer;
             scale: 1.1;
-            background-color: #20BA5A;
+            background-color: #25D366;
         }
 
-        .card4:hover .discord {
+        .card4:hover .whatsapp {
             fill: white;
         }
 
-        .meta-link,
-        #source-link,
-        #yt-link,
-        #Fund-link {
-            display: none !important;
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            #header {
+                padding: 15px 4%;
+            }
+            
+            .section-p1 {
+                padding: 30px 4%;
+            }
+            
+            #form-details {
+                padding: 30px 4%;
+            }
+            
+            .stats-container {
+                padding: 0 4%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background-color: #fff;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 20px;
+                transition: 0.3s;
+            }
+
+            #navbar.active {
+                right: 0;
+            }
+
+            #navbar li {
+                margin-bottom: 25px;
+            }
+
+            #mobile {
+                display: flex;
+                align-items: center;
+            }
+
+            #mobile i {
+                color: #1a1a1a;
+                font-size: 24px;
+                padding-left: 20px;
+            }
+
+            #close {
+                display: initial;
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                color: #222;
+                font-size: 24px;
+            }
+
+            #contact-details {
+                flex-direction: column;
+            }
+
+            .details,
+            .map {
+                width: 100%;
+            }
+
+            .map {
+                margin-top: 30px;
+                height: 300px;
+            }
+
+            #form-details {
+                flex-direction: column;
+                padding: 30px 4%;
+            }
+
+            #form-details form,
+            .people {
+                width: 100%;
+            }
+
+            .people {
+                margin-top: 30px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 477px) {
+            #header {
+                padding: 10px 4%;
+            }
+
+            .section-p1 {
+                padding: 20px 4%;
+            }
+
+            #page-header {
+                height: 30vh;
+            }
+
+            #page-header h2 {
+                font-size: 28px;
+            }
+
+            .details h2 {
+                font-size: 24px;
+            }
+
+            #form-details {
+                padding: 20px 4%;
+                margin: 20px 0;
+            }
+
+            .people div {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .people div img {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .share-btn {
+                width: 70px;
+                height: 70px;
+            }
+
+            .card1,
+            .card2,
+            .card3,
+            .card4 {
+                width: 75px;
+                height: 75px;
+            }
+
+            .card1 svg,
+            .card2 svg,
+            .card3 svg,
+            .card4 svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            #brand {
+                font-size: 18px;
+            }
+            
+            .brand-logo {
+                height: 30px;
+            }
+            
+            #page-header h2 {
+                font-size: 24px;
+            }
+            
+            .details h2 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
@@ -597,6 +800,7 @@
         </a>
         <div>
             <ul id="navbar">
+                <li id="close"><a href="#"><i class="fas fa-times"></i></a></li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="product.html">Shop</a></li>
                 <li><a class="active" href="contact.html">Contact</a></li>
@@ -604,6 +808,9 @@
                 <li><a href="register.html">Signup</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
+        </div>
+        <div id="mobile">
+            <a href="#"><i class="fas fa-bars"></i></a>
         </div>
     </section>
 
@@ -805,8 +1012,24 @@
         </section>
     </div>
 
-    <script src="shop.js"></script>
     <script>
+        // Mobile menu toggle
+        const bar = document.getElementById('mobile');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+
+        if (bar) {
+            bar.addEventListener('click', () => {
+                nav.classList.add('active');
+            });
+        }
+
+        if (close) {
+            close.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        }
+
         // Contact form handling
         document.addEventListener('DOMContentLoaded', function () {
             const contactForm = document.getElementById('contact-form');
@@ -866,12 +1089,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
